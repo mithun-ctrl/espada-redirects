@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background-size: 120% 120%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            background-image: linear-gradient(to left top, 
+        rgba(83, 42, 179, 0.829),
+        rgba(255, 60, 0, 0.726)),
+         url("https://jpcdn.it/img/small/de28ccc50e0f610242be309dbc67145f.jpg");
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Animated background particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 40%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 60%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 80%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 10%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 90%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+            letter-spacing: 2px;
+            z-index: 10;
+            transform: rotate(-15deg);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Main container */
+        .container {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            z-index: 5;
+            position: relative;
+            transform: translateY(0);
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Telegram icon */
+        .telegram-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, #229ED9, #0088cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(34, 158, 217, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .telegram-icon::before {
+            content: "✈";
+            font-size: 30px;
+            color: white;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #5b86e5);
+            border-radius: 3px;
+            width: 0%;
+            animation: progress 1.5s ease-in-out;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* Manual redirect link */
+        .redirect-link {
+            color: #87CEEB;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(135, 206, 235, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            background: rgba(135, 206, 235, 0.1);
+        }
+        
+        .redirect-link:hover {
+            background: rgba(135, 206, 235, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.3);
+            border-color: rgba(135, 206, 235, 0.5);
+        }
+        
+        /* Error state */
+        .error-container {
+            background: rgba(255, 82, 82, 0.1);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+            color: #ff5252;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .watermark {
+                font-size: 0.7rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        /* Glow effect */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(135, 206, 235, 0.3); }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="watermark">ESPADA_ORG</div>
+    
+    <div class="container">
+        <div class="telegram-icon"></div>
+        <div class="spinner"></div>
+        <h1 class="glow">Redirecting to Telegram</h1>
+        <p class="subtitle">Connecting you to our secure bot...</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <p><a href="#" id="manualLink" class="redirect-link">Click here if redirect doesn't work</a></p>
+    </div>
+
+    <script>
+        // Configuration - Update these values
+        const currentBotUsername = 'KleinMoretiBot'; // Replace with your actual bot username
+        
+        function getFileIdFromUrl() {
+            // Extract file ID from URL path
+            const path = window.location.pathname;
+            // Remove leading slash and get the file ID
+            const fileId = path.replace(/^\/+/, '').split('/')[0];
+            return fileId;
+        }
+        
+        function redirectToTelegram() {
+            const fileId = getFileIdFromUrl();
+            
+            // Validate that we have a file ID
+            if (!fileId || fileId === '') {
+                console.error('No file ID found in URL');
+                showError();
+                return;
+            }
+            
+            // Construct the Telegram URL
+            const telegramUrl = `https://t.me/${currentBotUsername}?start=${fileId}`;
+            
+            // Update the manual link
+            document.getElementById('manualLink').href = telegramUrl;
+            
+            // Log for debugging
+            console.log('File ID:', fileId);
+            console.log('Redirecting to:', telegramUrl);
+            
+            setTimeout(() => {
+                window.location.href = telegramUrl;
+            }, 1500);
+        }
+        
+        function showError() {
+            const container = document.querySelector('.container');
+            container.className = 'container error-container';
+            container.innerHTML = `
+                <div class="error-icon">⚠️</div>
+                <h1>Invalid Link</h1>
+                <p class="subtitle">The provided URL format is incorrect. Please check your link and try again.</p>
+            `;
+        }
+        
+        // Start the redirect process when page loads
+        window.addEventListener('load', redirectToTelegram);
+    </script>
+</body>
+</html>
